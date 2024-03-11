@@ -20,15 +20,19 @@
   // и измените там все как у вас в этом черном окне
 */
 
+#define STATIC_IP // закомментировать если подключаетесь к мобильной точке доступа на телефоне 
 
-// wifi со статическим айпишничком
-const char* ssid = "kuso4ek_raya";
+// wifi const char* ssid = "kuso4ek_raya";
 const char* password = "1234567812345678";
+
+#ifdef STATIC_IP
+//со статическим айпишничком
 IPAddress staticIP(192, 168, 10, 201); // важно правильно указать третье число - подсеть, смотри пояснения выше
 IPAddress gateway(192, 168, 10, 1);    // и тут изменить тройку на свою подсеть
 IPAddress subnet(255, 255, 255, 0);
 IPAddress dns1(192, 168, 10, 1);       // изменить тройку на свою подсеть
 IPAddress dns2(8, 8, 8, 8);
+#endif 
 
 // настройка реле
 #define RELE1 14
@@ -122,10 +126,13 @@ void wifiSupport() {
     Serial.print(ssid);
     Serial.print(":");
     WiFi.mode(WIFI_STA);
+    #ifdef STATIC_IP
     if (WiFi.config(staticIP, gateway, subnet, dns1, dns2) == false) {
       Serial.println("wifi config failed.");
       return;
     }
+    #endif
+    
     WiFi.begin(ssid, password);
     uint8_t trycon = 0;
     while (WiFi.status() != WL_CONNECTED) {
