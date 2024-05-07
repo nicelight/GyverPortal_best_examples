@@ -3,6 +3,8 @@
 
 **Лучшие фишки доступным языком. DIY теплица с управлением по WiFi**
 
+![КДПВ](https://github.com/nicelight/GyverPortal_best_examples/blob/main/!GREENHOUSE_STEPS/oblojka.png)
+
 Видео по примерам https://youtu.be/GXNEnPe51rc
 
 Изучаем самые лучшие возможности библиотеки Gyverportal . Учимся внедрять в свой проект. Примеры скетчей для реализации следующих фишек:
